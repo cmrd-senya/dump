@@ -37,7 +37,7 @@ namespace :dump do
     output = nil
     on primary(:db) do
       within current_path do
-        with({ rails_env: fetch_rails_env, progress_tty: '+' }.merge(env)) do
+        with({ rails_env: fetch(:rails_env), progress_tty: '+' }.merge(env)) do
           output = capture(:rake, "dump:#{rake_task}")
         end
       end
@@ -92,7 +92,7 @@ namespace :dump do
     end
   end
 
-  namespace :remote do
+  namespace :remote dofe
     desc 'Create remote dump' << Dump::Env.explain_variables_for_command(:create)
     task :create do
       print_and_return_or_fail do
